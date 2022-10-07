@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "16597512678",
+    "project_id": "squepay",
+    "storage_bucket": "squepay.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:16597512678:android:4cab2b67de93d92ce4e627",
+        "android_client_info": {
+          "package_name": "com.example.squepay"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "16597512678-nh55fst9idii856nd03u2vfqq7nspvab.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC7p3mntVg-RPxDpmyOEtH5fD-OZPDDrmg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "16597512678-nh55fst9idii856nd03u2vfqq7nspvab.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
