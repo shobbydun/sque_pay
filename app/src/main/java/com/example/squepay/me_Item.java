@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.firebase.ui.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -86,7 +86,6 @@ public class me_Item extends AppCompatActivity {
     @Override
     protected  void  onStart() {
         super.onStart();
-
         FirebaseRecyclerAdapter<Items, AddCart.UsersViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Items, AddCart.UsersViewHolder>
                 (  Items.class,
                         R.layout.list_layout,
@@ -102,25 +101,5 @@ public class me_Item extends AppCompatActivity {
 
         mrecyclerview.setAdapter(firebaseRecyclerAdapter);
     }
-//    public static class UsersViewHolder extends RecyclerView.ViewHolder{
-//        View mView;
-//        public UsersViewHolder(View itemView){
-//            super(itemView);
-//            mView =itemView;
-//        }
-//
-//        public void setDetails(Context ctx, String itembarcode, String itemcategory, String itemname, String itemprice){
-//            TextView item_barcode = (TextView) mView.findViewById(R.id.viewitembarcode);
-//            TextView item_name = (TextView) mView.findViewById(R.id.viewitemname);
-//            TextView item_category = (TextView) mView.findViewById(R.id.viewitemcategory);
-//            TextView item_price = (TextView) mView.findViewById(R.id.viewitemprice);
-//
-//            item_barcode.setText(itembarcode);
-//            item_category.setText(itemcategory);
-//            item_name.setText(itemname);
-//            item_price.setText(itemprice);
-//        }
-//
-//    }
 
 }

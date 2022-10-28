@@ -14,18 +14,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.firebase.ui.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
-import com.google.firebase.database.ValueEventListener;
-
-import java.util.Map;
 
 public class AddCart extends AppCompatActivity {
     public static EditText resultsearcheview;
@@ -35,14 +29,16 @@ public class AddCart extends AppCompatActivity {
     Adapter adapter;
     RecyclerView mrecyclerview;
     DatabaseReference mdatabaseReference;
+    FirebaseRecyclerAdapter<Items, UsersViewHolder> firebaseUsersAdapter = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_cart);
         firebaseAuth = FirebaseAuth.getInstance();
         final FirebaseUser users = firebaseAuth.getCurrentUser();
-        String finaluser=users.getEmail();
-        String resultemail = finaluser.replace(".","");
+        String finaluser = users.getEmail();
+        String resultemail = finaluser.replace(".", "");
         mdatabaseReference = FirebaseDatabase.getInstance().getReference("Users").child(resultemail).child("Items");
         resultsearcheview = findViewById(R.id.searchfield);
         scantosearch = findViewById(R.id.imageButtonSearch);
@@ -74,7 +70,7 @@ public class AddCart extends AppCompatActivity {
 
     }
 
-    public void firebasesearch(String searchtext){
+    public void firebasesearch(String searchtext) {
         Query firebaseSearchQuery = mdatabaseReference.orderByChild("itembarcode").startAt(searchtext).endAt(searchtext+"\uf8ff");
         FirebaseRecyclerAdapter<Items, UsersViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Items, UsersViewHolder>
                 (  Items.class,
@@ -92,7 +88,8 @@ public class AddCart extends AppCompatActivity {
         mrecyclerview.setAdapter(firebaseRecyclerAdapter);
     }
 
-    public static class UsersViewHolder extends RecyclerView.ViewHolder{
+
+public static class UsersViewHolder extends RecyclerView.ViewHolder{
         View mView;
         public UsersViewHolder(View itemView){
             super(itemView);
